@@ -1,14 +1,14 @@
 class Solution(object):
     def diameterOfBinaryTree(self, root):
-        currMax = [0]
+        self.currMax = 0
         def dfs(root):
             if root:
                 left = dfs(root.left)
                 right = dfs(root.right)
-                currMax[0] = max(left + right, currMax[0])
+                currMax = max(left + right, self.currMax)
                 return max(left, right) + 1
             else:
                 return 0
             
         dfs(root)
-        return currMax[0]
+        return self.currMax
